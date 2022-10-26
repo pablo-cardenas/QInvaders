@@ -14,7 +14,6 @@ To run QInvaders
 $ qinvaders
 ```
 
-
 ## How to play
 
 Se debe evitar la invasión destruyendo a los invasores.
@@ -27,7 +26,7 @@ Este juego tiene dos modos: modo FÁCIL y modo DIFÍCIL.
 
 En el modo fácil, uno debe escoger los estados que quiere superponer.
 
-  * Combinar las teclas A, S, D, F,  J, K, L, (;|Ñ) para tener una superposición de estados.
+  * Combinar las teclas A, S, D, F,  J, K, L, (; ó Ñ) para tener una superposición de estados.
   * SPACE: pausar el juego
 
 ### Modo Difícil
