@@ -27,8 +27,9 @@ def main():
     pygame.display.set_caption("Infinite QRunner")
     background = black
     fps = 60
-    font = pygame.font.Font(None, 60)
+    font_score = pygame.font.Font(None, 60)
     font_state = pygame.font.Font(None, 20)
+    font_pause = pygame.font.Font(None, 40)
     clock = pygame.time.Clock()
     running = True
     paused = False
@@ -162,8 +163,13 @@ def main():
         num_changes = len(changes)
         changes_lastminute = sum(1 for s in changes if s > step - 60 * fps)
         score = changes_lastminute / min(1, (step / 60 / fps) ** 2)
-        score_text = font.render(f"{score:0.1f}", True, white)
-        changes_text = font.render(str(num_changes), True, white)
+        score_text = font_score.render(f"{score:0.1f}", True, white)
+        changes_text = font_score.render(str(num_changes), True, white)
+        pause_text_list = [
+            font_pause.render("Pausa", True, white),
+            font_pause.render("para", True, white),
+            font_pause.render("pensar", True, white),
+        ]
 
         # Draw lines
         pygame.draw.line(
@@ -249,6 +255,10 @@ def main():
                     space_height - 40,
                 ),
             )
+
+        if paused:
+            for i, pause_text in enumerate(pause_text_list):
+                screen.blit(pause_text, (0, 160 +i *30))
 
         screen.blit(changes_text, (0, 0))
         screen.blit(score_text, (0, 80))
