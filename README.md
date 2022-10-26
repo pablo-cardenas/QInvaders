@@ -2,4 +2,8 @@
 
 ## Installation
 
-Merge thi
+Use pip + git for installation 
+
+```
+pip install git+https://github.com/pablo-cardenas/QInvaders
+```
