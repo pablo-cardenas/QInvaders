@@ -9,7 +9,7 @@ El objetivo de este juego es mostrar que usando una estrategia cuántica se obti
 Use pip + git for installation 
 
 ```
-$ pip install git+https://github.com/pablo-cardenas/QInvaders
+$ pip install --force-reinstall git+https://github.com/pablo-cardenas/QInvaders@main
 ```
 
 Para correr QInvaders, simplemente ejecutar `qinvaders`  en la terminal
@@ -52,6 +52,6 @@ En el modo difícil, uno debe diseñar el circuito cuántico  que genera la supe
 
 ## Ventaja Cuántica
 
-Este juego muestra
+Este juego muestra que es más ventajoso tener una estrategia cuántica que tener una estrategia clásica.
 
-###
+### 
