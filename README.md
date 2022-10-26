@@ -19,7 +19,7 @@ $ qinvaders
 
 Se debe evitar la invasión destruyendo a los invasores.
 Para ello se tiene un cañón **quántico**  que lanza misiles **quánticos**.
-El objetivo es **evitar la invasión con la mínima cantidad de cambios de estados del cañón**.
+El objetivo es evitar la invasión con la **mínima cantidad de cambios de estados** del cañón por minuto.
 
 Este juego tiene dos modos: modo FÁCIL y modo DIFÍCIL.
 
