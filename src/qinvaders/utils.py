@@ -96,12 +96,12 @@ class Input:
             return
 
         key_list = [
-            pygame.K_KP7,
-            pygame.K_KP8,
-            pygame.K_KP4,
-            pygame.K_KP5,
-            pygame.K_KP1,
-            pygame.K_KP2,
+            pygame.K_q,
+            pygame.K_w,
+            pygame.K_a,
+            pygame.K_s,
+            pygame.K_z,
+            pygame.K_x,
         ]
         key_dict = {key: i for i, key in enumerate(key_list)}
         event_gate = key_dict.get(event.key)
