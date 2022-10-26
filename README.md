@@ -48,3 +48,10 @@ En el modo difícil, uno debe diseñar el circuito cuántico  que genera la supe
   * Usar las teclas W, S, X para poner una compuerta H.
   * SPACE: pausar el juego.
   * TAB: cambiar al modo fácil.
+
+
+## Ventaja Cuántica
+
+Este juego muestra
+
+###

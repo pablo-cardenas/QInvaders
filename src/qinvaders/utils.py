@@ -120,12 +120,12 @@ class Input:
             pygame.K_s,
             pygame.K_d,
             pygame.K_f,
+            pygame.K_h,
             pygame.K_j,
             pygame.K_k,
             pygame.K_l,
-            pygame.K_SEMICOLON,
         ]
-        key_dict = {key: i for i, key in enumerate(key_list)}
+        key_dict = {key: min(i, 7) for i, key in enumerate(key_list)}
         event_player = key_dict.get(event.key)
 
         if event_player is None:
