@@ -18,6 +18,12 @@ $ qinvaders
 
 Se debe evitar la invasión destruyendo a los invasores.
 Para ello se tiene un cañón **quántico**  que lanza misiles **quánticos**.
+
+El cañón puede estar en un estado de superposición, es decir, puede estar en *varios lugares a la vez*.
+Durante todo el juego, el cañón estará lanzando misiles.
+Estos misiles estarán en un estado de superposición mientras no lo hayan visto los invasores, es decir, mientras no se ha *medido*.
+Al momento de hacer la medición, los misiles colapsan en un único estado y podrá impactar con las naves.
+
 El objetivo es evitar la invasión con la **mínima cantidad de cambios de estados** del cañón por minuto.
 
 Este juego tiene dos modos: modo FÁCIL y modo DIFÍCIL.
