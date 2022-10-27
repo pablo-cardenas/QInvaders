@@ -30,6 +30,7 @@ def main():
     font_score = pygame.font.Font(None, 60)
     font_state = pygame.font.Font(None, 20)
     font_pause = pygame.font.Font(None, 40)
+    font_efficiency = pygame.font.Font(None, 30)
     clock = pygame.time.Clock()
     running = True
     paused = False
@@ -162,8 +163,8 @@ def main():
         # Draw score
         num_changes = len(changes)
         changes_lastminute = sum(1 for s in changes if s > step - 60 * fps)
-        score = changes_lastminute / min(1, (step / 60 / fps) ** 2)
-        score_text = font_score.render(f"{score:0.1f}", True, white)
+        score = 1000 * min(60, 60*(step/60 / fps) ** 2) / changes_lastminute 
+        score_text = font_score.render(f"{max(0, score-random.randrange(5)):04.0f}", True, white)
         changes_text = font_score.render(str(num_changes), True, white)
         pause_text_list = [
             font_pause.render("Pausa", True, white),
@@ -260,8 +261,10 @@ def main():
             for i, pause_text in enumerate(pause_text_list):
                 screen.blit(pause_text, (0, 160 +i *30))
 
-        screen.blit(changes_text, (0, 0))
-        screen.blit(score_text, (0, 80))
+        #screen.blit(changes_text, (0, 0))
+        screen.blit(font_efficiency.render("Eficiencia", True, white), (5, 20))
+        screen.blit(score_text, (5, 40))
+        screen.blit(font_state.render("ms per mov", True, white), (5, 80))
         screen.blit(input.surface, (0, space_height - 120))
         screen.blit(space_surface, (120, 0))
         pygame.display.update()
