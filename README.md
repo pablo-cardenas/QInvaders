@@ -28,7 +28,9 @@ Durante todo el juego, el cañón estará lanzando misiles.
 Estos misiles estarán en un estado de superposición mientras no lo hayan visto los invasores, es decir, mientras no se haya *medido*.
 Al momento de hacer la medición, los misiles colapsan en un único estado y podrá impactar con las naves.
 
-El objetivo es evitar la invasión con la **mínima cantidad de cambios de estados** del cañón por minuto.
+El objetivo es evitar la invasión con la **mejor eficiencia**.
+Donde la eficiencia es **la taza de milisegundos usados por cada cambio de estado del cañón**.
+Es decir, se debe minimizar la cantidad de cambios de estados del cañón por minuto.
 
 Este juego tiene dos modos: modo FÁCIL y modo DIFÍCIL. La tecla TAB sirve para cambiar entre el modo fácil y el modo difícil.
 
