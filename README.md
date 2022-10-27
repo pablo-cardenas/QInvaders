@@ -88,7 +88,7 @@ La estrategia cuántica permite usar el cañón en un estado de superposición, 
 En los momentos que vengan varios invasores a la vez.
 Se puede atacar a todos los invasores usando sólamente un estado superpuesto.
 
-### Comparación: Cuántica > Clásica
+### Comparación de Estrategias: Cuántica > Clásica
 
 Se observa que usando la estrategia clásica se consigue una eficienca de 2000 y usando la estrategia cuántica se puede superar los 5000
 
