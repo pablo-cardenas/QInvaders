@@ -23,7 +23,7 @@ $ qinvaders
 En QInvaders, uno tiene dos modos, modo fácil y modo difícil.
 El modo difícil es parecido al QPong, en donde uno diseña el circuito cuántico para obtener un estado resultado deseado.
 Consideramos que eso es demasiado difícil para alguien que está empezando en Computación Cuántica y que se debe tener aprendizaje más progresivo en este campo.
-Es por ello que creamos el modo fácil, en donde uno indica cuál es el estado deseado y el juego **muestra el circuito cuántico que genera ese estado.
+Es por ello que creamos el modo fácil, en donde uno indica cuál es el estado deseado y el juego **muestra el circuito cuántico que genera ese estado**.
 
 Además, QPong es complicado porque no se puede pausar para pensar.
 Crear circuitos cuánticos que devuelvan un estado deseado **toma su tiempo** (incluso para expertos en computación cuántica).
