@@ -18,7 +18,21 @@ Para correr QInvaders, simplemente ejecutar `qinvaders`  en la terminal
 $ qinvaders
 ```
 
-## Cómo jugar
+## ¿Qué hace único a QInvaders?
+
+En QInvaders, uno tiene dos modos, modo fácil y modo difícil.
+El modo difícil es parecido al QPong, en donde uno diseña el circuito cuántico para obtener un estado resultado deseado.
+Consideramos que eso es demasiado difícil para alguien que está empezando en Computación Cuántica y que se debe tener aprendizaje más progresivo en este campo.
+Es por ello que creamos el modo fácil, en donde uno indica cuál es el estado deseado y el juego **muestra el circuito cuántico que genera ese estado.
+
+Además, QPong es complicado porque no se puede pausar para pensar.
+Crear circuitos cuánticos que devuelvan un estado deseado **toma su tiempo** (incluso para expertos en computación cuántica).
+Es por ello que, en QInvaders, le añadimos una tecla (ESPACIO) de **pausa para pensar**.
+
+Finalmente, la característica  **más importante** de QInvaders es que se evidencia que **una estrategia cuántica es mejor que una estrategia clásica**.
+
+
+## ¿Cómo jugar?
 
 Se debe evitar la invasión destruyendo a los invasores.
 Para ello se tiene un cañón **quántico**  que lanza misiles **quánticos**.
