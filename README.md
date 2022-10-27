@@ -11,7 +11,7 @@ El objetivo de este juego es mostrar que usando una estrategia cuántica se obti
 Usar pip + git para instalar sin necesidad de clonar el repositorio.
 
 ```console
-$ pip install --force-reinstall git+https://github.com/pablo-cardenas/QInvaders@main
+pip install --force-reinstall git+https://github.com/pablo-cardenas/QInvaders@main
 ```
 
 ### Alternative 2: Clone and install
@@ -19,9 +19,9 @@ $ pip install --force-reinstall git+https://github.com/pablo-cardenas/QInvaders@
 Clonar el repositorio y luego instalarlo con pip
 
 ```console
-$ git clone https://github.com/pablo-cardenas/QInvaders.git
-$ cd QInvaders
-$ pip install .
+git clone https://github.com/pablo-cardenas/QInvaders.git
+cd QInvaders
+pip install .
 ```
 
 ### Run the program
@@ -29,7 +29,7 @@ $ pip install .
 Para correr QInvaders, simplemente ejecutar `qinvaders`  en la terminal
 
 ```console
-$ qinvaders
+qinvaders
 ```
 
 ## ¿Qué hace único a QInvaders?
