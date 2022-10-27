@@ -72,13 +72,13 @@ La estrategia cuántica permite usar el cañón en un estado de superposición, 
 En los momentos que vengan varios invasores a la vez.
 Se puede atacar a todos los invasores usando sólamente un estado superpuesto.
 
-Nota: La estrategia de usar el estado totalmente entrelazado siempre
+### Comparación: Cuántica > Clásica
+
+Se observa que usando la estrategia clásica se consigue una eficienca de 2000 y usando la estrategia cuántica se puede superar los 5000
+
+**Nota:** La estrategia de usar el estado totalmente entrelazado siempre
 `(|000>+|001>+|010>+|011>+|100>+|101>+|110>+|111>)/sqrt(8)` **no funciaría**, 
 ya que sería enviar misiles superpuestos en todas las posiciones a la vez.
 Al momento de colapsar escogería aleatoriamente cualquier posición y
 varios de esos misiles **no impactarían** con ningún invasor.
-
-### Comparación: Cuántica > Clásica
-
-Se observa que usando la estrategia clásica se consigue una eficienca de 2000 y usando la estrategia cuántica se puede superar los 5000
 
