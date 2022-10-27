@@ -36,7 +36,7 @@ Este juego tiene dos modos: modo FÁCIL y modo DIFÍCIL. La tecla TAB sirve para
 
 En el modo fácil, uno debe escoger los estados que quiere superponer.
 
-  * Combinar las teclas A, S, D, F,  J, K, L, (; ó Ñ) para tener una superposición de estados.
+  * Combinar las teclas A, S, D, F, H, J, K, L para tener una superposición de estados.
   * SPACE: pausar el juego.
   * TAB: cambiar al modo difícil.
 
@@ -54,4 +54,31 @@ En el modo difícil, uno debe diseñar el circuito cuántico  que genera la supe
 
 Este juego muestra que es más ventajoso tener una estrategia cuántica que tener una estrategia clásica.
 
-### 
+### Estrategia Clásica
+
+La estrategia clásica es usar el cañón sin superposición, es decir en un sólo estado a la vez (determinístico).
+Entonces, los misiles serán lanzados en una sóla posición.
+Sin embargo, se tendrá que cambiar la posición del cañón para poder impactar a todos los invasores.
+
+Hay momentos en que vienen muchos invasores a la vez.
+Supongamos que hay 4 invasores viniendo a la vez y que estamos usando la estrategia clásica.
+Entonces, se tendría que hacer 4 movimientos para atacar a esos 4 invasores.
+Sin embargo, en la estrategia cuántica, sólo se necesita un movimiento.
+
+### Estrategia Cuántica
+
+La estrategia cuántica permite usar el cañón en un estado de superposición, es decir, que puede estar en varios lugares a la vez.
+
+En los momentos que vengan varios invasores a la vez.
+Se puede atacar a todos los invasores usando sólamente un estado superpuesto.
+
+Nota: La estrategia de usar el estado totalmente entrelazado siempre
+`(|000>+|001>+|010>+|011>+|100>+|101>+|110>+|111>)/sqrt(8)` **no funciaría**, 
+ya que sería enviar misiles superpuestos en todas las posiciones a la vez.
+Al momento de colapsar escogería aleatoriamente cualquier posición y
+varios de esos misiles **no impactarían** con ningún invasor.
+
+### Comparación: Cuántica > Clásica
+
+Se observa que usando la estrategia clásica se consigue una eficienca de 2000 y usando la estrategia cuántica se puede superar los 5000
+
