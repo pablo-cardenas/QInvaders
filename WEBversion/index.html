@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="parentDiv">
+        <canvas id="id_canvas"></canvas>
+    </div>
+
+    <div class="window2">        
+        <div class="content__main" style="font-size: 18px; padding: 50px;">
+            <a id="close__instructions">🗙</a>
+            <h2>¿Cómo jugar?</h2>
+            <br>
+            <p>
+                Se debe evitar la invasión destruyendo a los aliens. 
+                Para ello se tiene un cañón quántico que lanza misiles quánticos.
+                El cañón puede estar en un estado de superposición, es decir, puede estar 
+                en varios lugares a la vez. Durante todo el juego, el cañón estará lanzando misiles.
+                Estos misiles estarán en un estado de superposición mientras no lo hayan visto los invasores, 
+                es decir, mientras no se haya medido. Al momento de hacer la medición, los misiles 
+                colapsan en un único estado y podrá impactar con las naves.
+                El objetivo es evitar la invasión con la mejor eficiencia. Donde la eficiencia es la taza de 
+                milisegundos usados por cada cambio de estado del cañón. Es decir, se debe minimizar la cantidad 
+                de cambios de estados del cañón por minuto.
+            </p>
+            <br>
+            <h2>Estrategia Clásica</h2>
+            <br>
+            <p>
+                La estrategia clásica es usar el cañón sin superposición, es decir en un sólo estado a la vez (determinístico). 
+                Entonces, los misiles serán lanzados en una sóla posición. Sin embargo, se tendrá que cambiar la posición del 
+                cañón para poder impactar a todos los invasores.
+
+                Hay momentos en que vienen muchos invasores a la vez. Supongamos que hay 4 invasores viniendo a la vez y que 
+                estamos usando la estrategia clásica. Entonces, se tendría que hacer 4 movimientos para atacar a esos 4 invasores. 
+                Sin embargo, en la estrategia cuántica, sólo se necesita un movimiento.
+            </p>    
+            <ul style="margin-top: 10px;">
+                <li>Combinar las teclas A, S, D, F, H, J, K, L para tener una superposición de estados.</li>
+                <li>SPACE: pausar el juego.</li>                    
+                <li>P: cambiar al modo cuántico.</li>
+            </ul>
+            <br>
+            <h2>Estrategia Cuántica</h2>
+            <br>
+            <p>
+                La estrategia cuántica permite usar el cañón en un estado de superposición, es decir, que puede estar en varios 
+                lugares a la vez. En los momentos que vengan varios invasores a la vez. Se puede atacar a todos los invasores 
+                usando sólamente un estado superpuesto. 
+            </p> 
+            <ul style="padding-bottom: 50px; margin-top: 10px;">
+                <li>Usar las teclas Q, A, Z para poner una compuerta X.</li>
+                <li>Usar las teclas W, S, X para poner una compuerta H.</li>
+                <li>SPACE: pausar el juego.</li>
+                <li>P: cambiar al modo clásico.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="window1">        
+        <div class="content__main">
+            <div class="quantum__letter">Quantum</div>
+            <img style="margin-top: 70px;" src="./img/letterLogo.jpeg" width="400px">
+            <img src="./img/red.jpg" width="100px">
+            <a target="_blank" href="https://github.com/AlexRodriguezVillavicencio/QInvaders"><img src="./img/github.jpeg" width="100px"></a>
+            <p style="width: 50%; font-size: 17px; text-align: center ; margin-top: 10px;"> 
+                Quantum Space Invaders es una adaptación del clásico juego "Space Invaders" 
+                a una versión Cuántica.
+
+                El objetivo de este juego es mostrar que usando una estrategia cuántica 
+                se obtiene mejores puntajes que cuando se usa una estrategia clásica.
+            </p>
+            <div style="margin-top: 28px;">
+                <button id="instructions">Instrucciones</button>
+                <button id="start">Jugar</button> 
+            </div>
+            <p style="margin-top: 10px;"> 
+                Ganador del Qiskit Fall Fest Perú
+            </p>
+        </div>
+    </div>
+
+
+
+    <script src="js/audio.js"></script>
+    <script src="js/keys.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/events.js"></script>
+    <script src="js/projectile.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/invader.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
