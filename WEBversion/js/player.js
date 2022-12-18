@@ -10,7 +10,7 @@ class Player{
             this.height = image.height*scala
             this.position = {
                 x: 274 - this.width/2,
-                y: canvas.height - this.height -10 
+                y: canvas.height - this.height -25 
             }
         }
     }
@@ -38,7 +38,7 @@ class Player{
                     new Projectile({
                       position: {
                         x:274 + i*100,
-                        y: canvas.height - this.height -15
+                        y: canvas.height - this.height -30
                       },
                       velocity: {
                         x: 0,

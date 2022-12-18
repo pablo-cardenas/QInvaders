@@ -5,7 +5,7 @@ canvas.width = 1024
 canvas.height = 600
 
 let cannons_positions, player, projectiles;
-let frames, grids, randomInterval, spawnBuffer;
+let frames, grids, randomInterval, spawnBuffer,eficiencia;
 let pause, score, changeStep, end_game, modo_text;
 
 
@@ -36,10 +36,9 @@ function endGame(){
     }, 0)
 
     setTimeout(() => {
-      document.querySelector('#scoreContainer').style.display = 'none'
       document.querySelector('.window3').style.display = 'block'
     }, 1000)
-    document.querySelector('#eficienciaNC').innerHTML = Math.floor(eficiencia)    
+    document.querySelector('#eficienciaNC').innerHTML = Math.floor(eficiencia) 
 }
 
 
@@ -74,6 +73,8 @@ function animate(){
     c.fillText("|111⟩",974-15,590)
     
     c.font = "20px serif"
+    c.fillText(`Score: ${score}`,50,50)
+    c.fillText(`Eficiencia: ${Math.floor(eficiencia)}`,50,80)
     c.fillText(`Modo ${modo_text}`,50,200)
 
     // nave
@@ -89,7 +90,7 @@ function animate(){
     } 
 
     // invasores
-    grids.forEach((grid,gridIndex) => {
+    grids.forEach((grid) => {
         grid.update()
 
         for (let i = grid.invaders.length - 1; i >= 0; i--) {
@@ -100,6 +101,11 @@ function animate(){
             
             // disparando a los invasores
             projectiles.forEach((projectile, j) => {
+
+              // desaparecer misiles sin se encuentran fuera del lienzo
+              if (projectile.position.y < 10){
+                projectiles.splice(j, 1)
+              }
             
               if (
                 projectile.position.y - projectile.radius <=
@@ -120,23 +126,9 @@ function animate(){
                   // removiendo proyectiles e invasores
                   if (invaderFound && projectileFound) {
                     score += 1
-                    document.querySelector('#scoreQC').innerHTML = score
-
+                    audio.explode.play()
                     grid.invaders.splice(i, 1)
                     projectiles.splice(j, 1)
-      
-                    if (grid.invaders.length > 0) {
-                      const firstInvader = grid.invaders[0]
-                      const lastInvader = grid.invaders[grid.invaders.length - 1]
-      
-                      grid.width =
-                        lastInvader.position.x -
-                        firstInvader.position.x +
-                        lastInvader.width
-                      grid.position.x = firstInvader.position.x
-                    } else {
-                      grids.splice(gridIndex, 1)
-                    }
                   }
                 }, 0)
               }
@@ -160,7 +152,6 @@ function animate(){
       
     // eficiencia = (Resultado alcanzado / Coste total) x Tiempo invertido
     eficiencia = (score / changeStep) * window.performance.now() * 0.001
-    document.querySelector('#eficienciaQC').innerHTML = Math.floor(eficiencia)
     frames ++   
 }
 
@@ -168,6 +159,7 @@ function controllers(){
     addEventListener("keydown", function (e) {
 
         if(e.keyCode == 80){
+            audio.select.play()
             switchTF();
         }
         if(e.keyCode == 32){
@@ -195,7 +187,6 @@ document.querySelector('#start').addEventListener('click',()=>{
   document.querySelector('.window3').style.display = 'none'
   document.querySelector('.window2').style.display = 'none'
   document.querySelector('.window1').style.display = 'none'
-  document.querySelector('#scoreContainer').style.display = 'block'
   initCanvas();
   controllers()
   animate();
@@ -206,15 +197,16 @@ document.querySelector('#restart').addEventListener('click',()=>{
   document.querySelector('.window2').style.display = 'none'
   document.querySelector('.window1').style.display = 'none'
   document.querySelector('.window3').style.display = 'none'
-  document.querySelector('#scoreContainer').style.display = 'block'
   initCanvas();
   animate();
 })
 
 document.querySelector('#instructions').addEventListener('click',()=>{
+  audio.select.play()
   document.querySelector('.window1').style.display = 'none'
 })
 
 document.querySelector('#close__instructions').addEventListener('click',()=>{
+  audio.select.play()
   document.querySelector('.window1').style.display = 'block'
 })

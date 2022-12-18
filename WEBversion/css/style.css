@@ -36,6 +36,7 @@ body {
     height: 600px;
     background-color: rgb(1, 2, 2);
     border-radius: 10px;
+    /* display: none;  */
 }
 
 .content__main{
@@ -79,7 +80,8 @@ body {
     background-color: var(--color-background);
     border-radius: 10px;
     overflow-y:scroll;
-    font-family: 'Roboto', sans-serif;  
+    font-family: 'Roboto', sans-serif; 
+    /* display: none;  */
 }
 .window2::-webkit-scrollbar {
     width: 7px;
@@ -102,4 +104,11 @@ body {
 }
 #close__instructions:hover{
     background-color: rgba(0, 255, 255, 0.253);
+}
+
+.window3{
+    position: absolute;
+    width: 1024px;
+    height: 600px;
+    background-color: rgb(1, 2, 2);
 }
