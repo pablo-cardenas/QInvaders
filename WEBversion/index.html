@@ -8,11 +8,32 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    
+    <div id="scoreContainer">
+        <p><span>Score:</span> <span id="scoreQC">0</span></p>
+        <p><span>Eficiencia:</span> <span id="eficienciaQC">0</span></p>
+    </div>
+
     <div id="parentDiv">
         <canvas id="id_canvas"></canvas>
     </div>
 
-    <div class="window2">        
+    <div class="window3" >     
+            <div class="content__main">
+                <div class="quantum__letter">Quantum</div>
+                <img style="margin-top: 70px;" src="./img/letterLogo.jpeg" width="400px">
+                <a target="_blank" href="https://github.com/AlexRodriguezVillavicencio/QInvaders"><img src="./img/github.jpeg" width="100px"></a>
+                <br><br>
+                <h1 style="color: red; font-family: serif; font-size: 45px;">Game Over!</h1>
+                <br><br>
+                <h2><span>Eficiencia Conseguida:</span> <span id="eficienciaNC">0</span></h2>
+                <div style="margin-top: 28px;">
+                    <button id="restart">Jugar</button> 
+                </div>
+            </div>
+    </div>
+
+    <div class="window2" >        
         <div class="content__main" style="font-size: 18px; padding: 50px;">
             <a id="close__instructions">🗙</a>
             <h2>¿Cómo jugar?</h2>
@@ -55,8 +76,8 @@
                 usando sólamente un estado superpuesto. 
             </p> 
             <ul style="padding-bottom: 50px; margin-top: 10px;">
-                <li>Usar las teclas Q, A, Z para poner una compuerta X.</li>
-                <li>Usar las teclas W, S, X para poner una compuerta H.</li>
+                <li>Usar las teclas Q, A, Z para colocar una compuerta X.</li>
+                <li>Usar las teclas W, S, X para colocar una compuerta H.</li>
                 <li>SPACE: pausar el juego.</li>
                 <li>P: cambiar al modo clásico.</li>
             </ul>
@@ -86,7 +107,12 @@
         </div>
     </div>
 
-
+    <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"
+    integrity="sha512-6+YN/9o9BWrk6wSfGxQGpt3EUK6XeHi6yeHV+TYD2GR0Sj/cggRpXr1BrAQf0as6XslxomMUxXp2vIl+fv0QRA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer">
+    </script>
 
     <script src="js/audio.js"></script>
     <script src="js/keys.js"></script>

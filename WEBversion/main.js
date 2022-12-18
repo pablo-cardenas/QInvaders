@@ -4,21 +4,50 @@ const c = canvas.getContext('2d')
 canvas.width = 1024
 canvas.height = 600
 
-let start_drivers = false
-var cannons_positions = [1, 0, 0, 0, 0, 0, 0, 0]
+let cannons_positions, player, projectiles;
+let frames, grids, randomInterval, spawnBuffer;
+let pause, score, changeStep, end_game, modo_text;
 
-const player = new Player()
-let projectiles = []
-let frames = 0;
-let grids = []
-let randomInterval = Math.floor(Math.random() * 50 + 50)
-let spawnBuffer = 120
 
-var pause = false
-let score = 0
+function initCanvas(){
+  
+  cannons_positions = [1, 0, 0, 0, 0, 0, 0, 0]
+  
+  player = new Player()
+  projectiles = []
+  frames = 0;
+  grids = []
+  randomInterval = Math.floor(Math.random() * 50 + 50)
+  spawnBuffer = 120
+  
+  pause = false
+  score = 0
+  changeStep = 1
+  end_game = false
+  modo_text = "Clásico"
+}
+
+function endGame(){
+
+  end_game = true
+
+  setTimeout(() => {
+      audio.gameOver.play()
+    }, 0)
+
+    setTimeout(() => {
+      document.querySelector('#scoreContainer').style.display = 'none'
+      document.querySelector('.window3').style.display = 'block'
+    }, 1000)
+    document.querySelector('#eficienciaNC').innerHTML = Math.floor(eficiencia)    
+}
+
 
 function animate(){
-    if(pause) return;
+
+  if (end_game) return;
+
+  if(pause) return;
 
     requestAnimationFrame(animate)
     
@@ -31,8 +60,22 @@ function animate(){
         c.moveTo(224 + 100*i ,0);
         c.lineTo(224 + 100*i ,576);
         c.stroke();
-    }    
+    }
+
+    c.font = "15px serif"
+    c.fillStyle = "white"
+    c.fillText("|000⟩",274-15,590)   
+    c.fillText("|001⟩",374-15,590)   
+    c.fillText("|010⟩",474-15,590)   
+    c.fillText("|011⟩",574-15,590)   
+    c.fillText("|100⟩",674-15,590)   
+    c.fillText("|101⟩",774-15,590)   
+    c.fillText("|110⟩",874-15,590)   
+    c.fillText("|111⟩",974-15,590)
     
+    c.font = "20px serif"
+    c.fillText(`Modo ${modo_text}`,50,200)
+
     // nave
     player.update()
     
@@ -53,9 +96,9 @@ function animate(){
           const invader = grid.invaders[i]
           invader.update({ velocity: grid.velocity })
 
-          // disparando a los invasores
           if (invader.position !== undefined){
-
+            
+            // disparando a los invasores
             projectiles.forEach((projectile, j) => {
             
               if (
@@ -76,9 +119,9 @@ function animate(){
       
                   // removiendo proyectiles e invasores
                   if (invaderFound && projectileFound) {
-                    score += 100
-                    console.log(score)
-  
+                    score += 1
+                    document.querySelector('#scoreQC').innerHTML = score
+
                     grid.invaders.splice(i, 1)
                     projectiles.splice(j, 1)
       
@@ -99,7 +142,13 @@ function animate(){
               }
               
             })
+
+          // llegada invasores a la meta
+          if (canvas.height - invader.position.y < 50){
+            endGame();
           }
+          }
+
         } 
       })
 
@@ -107,41 +156,58 @@ function animate(){
         grids.push(new Grid())
         randomInterval = Math.floor(Math.random() * 80 + spawnBuffer)
         frames = 0
-      }    
-    frames ++    
+      }   
+      
+    // eficiencia = (Resultado alcanzado / Coste total) x Tiempo invertido
+    eficiencia = (score / changeStep) * window.performance.now() * 0.001
+    document.querySelector('#eficienciaQC').innerHTML = Math.floor(eficiencia)
+    frames ++   
 }
 
 function controllers(){
-  if (start_drivers){
-    window.addEventListener("keydown", function (e) {
-        console.log(e.keyCode)
-        // si es la tecla 'p'
+    addEventListener("keydown", function (e) {
+
         if(e.keyCode == 80){
             switchTF();
         }
         if(e.keyCode == 32){
-            pause = !pause
-            if(!pause){
-                animate()
-            }
+          pause = !pause
+          animate()
+          console.log(pause)
         }
   
         if (quantum_activate){
             poll_event_quantum(e.keyCode)
-            console.log('activo')
+            modo_text = "Cuántico"
+            changeStep +=1
         }
         else{
             poll_event_classical(e.keyCode);
+            modo_text = "Clásico"
+            changeStep +=1
         }
     });
-  }
 }
 
 document.querySelector('#start').addEventListener('click',()=>{
+  audio.backgroundMusic.play()
+  audio.start.play()
+  document.querySelector('.window3').style.display = 'none'
   document.querySelector('.window2').style.display = 'none'
   document.querySelector('.window1').style.display = 'none'
-  start_drivers = true
-  controllers();
+  document.querySelector('#scoreContainer').style.display = 'block'
+  initCanvas();
+  controllers()
+  animate();
+})
+
+document.querySelector('#restart').addEventListener('click',()=>{
+  audio.start.play()
+  document.querySelector('.window2').style.display = 'none'
+  document.querySelector('.window1').style.display = 'none'
+  document.querySelector('.window3').style.display = 'none'
+  document.querySelector('#scoreContainer').style.display = 'block'
+  initCanvas();
   animate();
 })
 
