@@ -6,7 +6,7 @@ function poll_event_classical(eventKey){
     }
 }
 
-function poll_event_quantum(eventKey){
+function poll_event_quantum(eventKey, llave = false){
     if (eventKey in keys_quantum){
         
         fetch("http://127.0.0.1:8000/quantum", 
@@ -16,13 +16,26 @@ function poll_event_quantum(eventKey){
                 'Content-type': 'application/json',
                 'Accept': 'application/json'
             },
-            body:JSON.stringify(eventKey)}).then(res=>{
+            body:JSON.stringify({eventKey,llave})}).then(res=>{
                 if(res.ok){
                     return res.json()
                 }else{
                     alert("something is wrong")
                 }
-            }).then(Response=> foreach_position(Response)
+            }).then(Response=> 
+                foreach_position(Response)
+                // console.log(Response)
             ).catch((err) => console.error(err));            
     }
 }
+
+// function retorno_matrix(){
+        
+//         fetch("http://127.0.0.1:8000/quantum").then(Response=> {
+
+//             foreach_position(Response)
+//             console.log(Response)
+//         } 
+//             ).catch((err) => console.error(err));            
+
+// }

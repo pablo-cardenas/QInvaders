@@ -4,7 +4,7 @@ const c = canvas.getContext('2d')
 canvas.width = 1024
 canvas.height = 600
 
-let cannons_positions, player, projectiles;
+let cannons_positions,cannons_draw, player, projectiles;
 let frames, grids, randomInterval, spawnBuffer,eficiencia;
 let pause, score, changeStep, end_game, modo_text;
 
@@ -12,14 +12,13 @@ let pause, score, changeStep, end_game, modo_text;
 function initCanvas(){
   
   cannons_positions = [1, 0, 0, 0, 0, 0, 0, 0]
-  
   player = new Player()
   projectiles = []
   frames = 0;
   grids = []
   randomInterval = Math.floor(Math.random() * 50 + 50)
   spawnBuffer = 120
-  
+  cannons_draw = [0,0,0]
   pause = false
   score = 0
   changeStep = 1
@@ -71,7 +70,59 @@ function animate(){
     c.fillText("|101⟩",774-15,590)   
     c.fillText("|110⟩",874-15,590)   
     c.fillText("|111⟩",974-15,590)
-    
+
+    c.beginPath();
+    c.moveTo(70 ,475);
+    c.lineTo(180 ,475);
+    c.stroke();
+    c.beginPath();
+    c.moveTo(70 ,505);
+    c.lineTo(180 ,505);
+    c.stroke();
+    c.beginPath();
+    c.moveTo(70 ,535);
+    c.lineTo(180 ,535);
+    c.stroke();
+
+    c.fillText("Orden de los qbits:",60 ,370)
+    c.fillText("| q2 q1 q0 ⟩ = |000⟩",60 ,400)
+    c.fillText("Compuerta Cuántica:",53 ,450)
+    c.fillText("q0",50 ,480)
+    c.fillText("q1",50 ,510)
+    c.fillText("q2",50 ,540)
+
+    // console.log(cannons_draw)
+    if(cannons_draw[0] == 1){
+      c.fillText("X",100 ,480)
+    }
+    if(cannons_draw[0] == 2){
+      c.fillText("H",140 ,480)
+    }
+    if(cannons_draw[0] == 3){
+      c.fillText("X",100 ,480)
+      c.fillText("H",140 ,480)
+    }
+    if(cannons_draw[1] == 1){
+      c.fillText("X",100 ,510)
+    }
+    if(cannons_draw[1] == 2){
+      c.fillText("H",140 ,510)
+    }
+    if(cannons_draw[1] == 3){
+      c.fillText("X",100 ,510)
+      c.fillText("H",140 ,510)
+    }
+    if(cannons_draw[2] == 1){
+      c.fillText("X",100 ,540)
+    }
+    if(cannons_draw[2] == 2){
+      c.fillText("H",140 ,540)
+    }
+    if(cannons_draw[2] == 3){
+      c.fillText("X",100 ,540)
+      c.fillText("H",140 ,540)
+    }
+
     c.font = "20px serif"
     c.fillText(`Score: ${score}`,50,50)
     c.fillText(`Eficiencia: ${Math.floor(eficiencia)}`,50,80)
@@ -137,7 +188,7 @@ function animate(){
 
           // llegada invasores a la meta
           if (canvas.height - invader.position.y < 50){
-            endGame();
+            // endGame();
           }
           }
 
@@ -172,6 +223,7 @@ function controllers(){
             poll_event_quantum(e.keyCode)
             modo_text = "Cuántico"
             changeStep +=1
+            // console.log(cannons_draw)
         }
         else{
             poll_event_classical(e.keyCode);
@@ -197,6 +249,7 @@ document.querySelector('#restart').addEventListener('click',()=>{
   document.querySelector('.window2').style.display = 'none'
   document.querySelector('.window1').style.display = 'none'
   document.querySelector('.window3').style.display = 'none'
+  // retorno_matrix()
   initCanvas();
   animate();
 })
