@@ -24,11 +24,12 @@ class InputQuantum():
     def __init__(self):
         self.__gates = 3 * [0]
 
-    def event_quantum(self,eventKey):
+    def event_quantum(self,eventKey:list):
         key_dict = {key: i for i, key in enumerate(key_list)}
-        event_gate = key_dict.get(db_key[eventKey])
-        # puerta XOR 
-        self.__gates[event_gate // 2] ^= (event_gate % 2) + 1
+        for m in eventKey:
+            event_gate = key_dict.get(db_key[m])
+            # puerta XOR 
+            self.__gates[event_gate // 2] ^= (event_gate % 2) + 1
         return self.__gates
 
     def update_quantum(self,eventKey):
