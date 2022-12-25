@@ -8,7 +8,7 @@ class Invader {
     const image = new Image()
     image.src = './img/invader.png'
     image.onload = () => {
-      const scale = 1
+      const scale = 0.9 
       this.image = image
       this.width = image.width * scale
       this.height = image.height * scale
@@ -55,7 +55,7 @@ class Grid {
     this.invaders = []
 
     const matrix_init = generateMatrix();
-    const rows = Math.floor(Math.random() * 3 + 3)
+    const rows = Math.floor(Math.random() * 4 + 3)
 
     for (let x = 0; x < matrix_init.length; x++) {
       if (matrix_init[x] == 1){
@@ -64,7 +64,7 @@ class Grid {
             new Invader({
               position: {
                 x: x * 100 + 274 - 15,
-                y: y * 30 - 200
+                y: y * 25 - 200
               }
             })
             )

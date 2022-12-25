@@ -45,4 +45,8 @@ class InputQuantum():
                 gate_name = "H"
         
         psi = Statevector(circuit)
-        return (np.abs(psi.data)).astype(bool).astype(int) , np.abs(psi.data), self.__gates
+        data = np.abs(psi.data)
+        for i in list(set(data)):
+            if i != 0:
+                pr = i
+        return data.astype(bool).astype(int) , pr, self.__gates

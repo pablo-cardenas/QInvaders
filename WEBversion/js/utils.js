@@ -9,6 +9,7 @@ function foreach_position(data){
             cannons_draw = quantum_gates[i]
         }
     }
+    pr = data.probability
 }
 
 var quantum_activate = false

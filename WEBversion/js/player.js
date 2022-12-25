@@ -42,7 +42,7 @@ class Player{
                       },
                       velocity: {
                         x: 0,
-                        y: -7
+                        y: -6
                       }
                     })
                   )}

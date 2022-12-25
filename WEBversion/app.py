@@ -24,6 +24,6 @@ async def save(request: Request):
 
     return {
         'matrix': str(list(matrix)).replace(' ', ''),
-        'probability': str(list(probability)).replace(' ', ''),
+        'probability': str(probability),
         'draw': str(list(draw)).replace(' ', '')
     }

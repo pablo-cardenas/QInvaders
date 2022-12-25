@@ -56,7 +56,7 @@ const choiceRandom = (choice) => {
 const generateMatrix = () => {
     let input = []
     for (let i=0; i<8;i++){
-        input[i] = choiceRandom([0,1,0])
+        input[i] = choiceRandom([0,1,0,0])
     }
 
     return input

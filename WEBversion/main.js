@@ -6,7 +6,7 @@ canvas.height = 600
 
 let cannons_positions,cannons_draw, player, projectiles;
 let frames, grids, randomInterval, spawnBuffer,eficiencia;
-let pause, score, changeStep, end_game, modo_text;
+let pause, score, changeStep, end_game, modo_text, pr;
 
 
 function initCanvas(){
@@ -17,13 +17,14 @@ function initCanvas(){
   frames = 0;
   grids = []
   randomInterval = Math.floor(Math.random() * 50 + 50)
-  spawnBuffer = 120
+  spawnBuffer = 80
   cannons_draw = [0,0,0]
   pause = false
   score = 0
   changeStep = 1
   end_game = false
   modo_text = "Clásico"
+  pr = 1.0
 }
 
 function endGame(){
@@ -83,6 +84,10 @@ function animate(){
     c.moveTo(70 ,535);
     c.lineTo(180 ,535);
     c.stroke();
+    c.beginPath();
+    c.moveTo(224 ,100);
+    c.lineTo(1200 ,100);
+    c.stroke();
 
     c.fillText("Orden de los qbits:",60 ,370)
     c.fillText("| q2 q1 q0 ⟩ = |000⟩",60 ,400)
@@ -131,7 +136,7 @@ function animate(){
     // nave
     player.update()
     //12 y velocidad -7
-    if (frames % 42 === 0 ) {
+    if (frames % 12 === 0 ) {
         player.shoot(projectiles)
       }
 
@@ -154,7 +159,7 @@ function animate(){
             projectiles.forEach((projectile, j) => {
 
               // desaparecer misiles sin se encuentran fuera del lienzo
-              if (projectile.position.y < 10){
+              if (projectile.position.y < 100){
                 projectiles.splice(j, 1)
               }
             
@@ -175,11 +180,14 @@ function animate(){
                   )
 
                   // removiendo proyectiles e invasores
-                  if (invaderFound && projectileFound) {
-                    score += 1
-                    audio.explode.play()
-                    grid.invaders.splice(i, 1)
-                    projectiles.splice(j, 1)
+                  if (Math.random() < pr - 0.3){
+                    if (invaderFound && projectileFound) {
+                      score += 1
+                      audio.explode.play()
+                        grid.invaders.splice(i, 1)
+                        projectiles.splice(j, 1)
+
+                      }
                   }
 
                 }, 0)
@@ -189,7 +197,7 @@ function animate(){
 
           // llegada invasores a la meta
           if (canvas.height - invader.position.y < 50){
-            // endGame();
+            endGame();
           }
           }
 
@@ -217,14 +225,12 @@ function controllers(){
         if(e.keyCode == 32){
           pause = !pause
           animate()
-          console.log(pause)
         }
   
         if (quantum_activate){
             key_bag(e.keyCode)
             modo_text = "Cuántico"
             changeStep +=1
-            // console.log(cannons_draw)
         }
         else{
             poll_event_classical(e.keyCode);
@@ -250,7 +256,6 @@ document.querySelector('#restart').addEventListener('click',()=>{
   document.querySelector('.window2').style.display = 'none'
   document.querySelector('.window1').style.display = 'none'
   document.querySelector('.window3').style.display = 'none'
-  // retorno_matrix()
   initCanvas();
   animate();
 })
