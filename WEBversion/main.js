@@ -40,7 +40,7 @@ function endGame(){
     document.querySelector('#eficienciaNC').innerHTML = Math.floor(eficiencia) 
 }
 
-
+caracterx = false
 function animate(){
 
   if (end_game) return;
@@ -130,8 +130,8 @@ function animate(){
 
     // nave
     player.update()
-    
-    if (frames % 12 === 0 ) {
+    //12 y velocidad -7
+    if (frames % 42 === 0 ) {
         player.shoot(projectiles)
       }
 
@@ -173,7 +173,7 @@ function animate(){
                   const projectileFound = projectiles.find(
                     (projectile2) => projectile2 === projectile
                   )
-      
+
                   // removiendo proyectiles e invasores
                   if (invaderFound && projectileFound) {
                     score += 1
@@ -181,6 +181,7 @@ function animate(){
                     grid.invaders.splice(i, 1)
                     projectiles.splice(j, 1)
                   }
+
                 }, 0)
               }
               
@@ -220,7 +221,7 @@ function controllers(){
         }
   
         if (quantum_activate){
-            poll_event_quantum(e.keyCode)
+            key_bag(e.keyCode)
             modo_text = "Cuántico"
             changeStep +=1
             // console.log(cannons_draw)

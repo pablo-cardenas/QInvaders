@@ -6,9 +6,8 @@ function poll_event_classical(eventKey){
     }
 }
 
-function poll_event_quantum(eventKey, llave = false){
-    if (eventKey in keys_quantum){
-        
+function poll_event_quantum(keyList){
+    
         fetch("http://127.0.0.1:8000/quantum", 
         {
             method: 'POST',
@@ -16,26 +15,26 @@ function poll_event_quantum(eventKey, llave = false){
                 'Content-type': 'application/json',
                 'Accept': 'application/json'
             },
-            body:JSON.stringify({eventKey,llave})}).then(res=>{
+            body:JSON.stringify({keyList})}).then(res=>{
                 if(res.ok){
                     return res.json()
                 }else{
-                    alert("something is wrong")
+                    alert("Error en el envío de datos")
                 }
-            }).then(Response=> 
-                foreach_position(Response)
-                // console.log(Response)
-            ).catch((err) => console.error(err));            
-    }
+            }).then(Response=> foreach_position(Response))
+            .catch((err) => console.error(err));
 }
 
-// function retorno_matrix(){
-        
-//         fetch("http://127.0.0.1:8000/quantum").then(Response=> {
+var bag = []
+function key_bag(eventKey){
 
-//             foreach_position(Response)
-//             console.log(Response)
-//         } 
-//             ).catch((err) => console.error(err));            
-
-// }
+    if (eventKey in keys_quantum){
+        const index = bag.indexOf(eventKey)
+        if (index === -1) {
+            bag.push(eventKey);
+          } else {
+            bag.splice(index, 1);
+          }
+    }
+    poll_event_quantum(bag)
+}
